@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row mt-5 ">
+    <div class="col-2"></div>
+    <div class="col-6">
+        <div class="card">
+        <div class="card-body">
+            <h2 class="text-center mb-4"><u>Update status</u></h2><br><br>
+            <form method="post">
+              {% csrf_token %}
+            <div class="text-center">
+              <div class="mb-3">
+                {{ form|crispy}}
+                 {% if form.errors %}
+                 <h2><p class="text-danger">Enter The Sufficient Data</p></h2>
+                 {% endif %}
+              </div>
+              <button  type="submit" class="btn btn-primary">EDIT</button>
+            </div>
+            </form>
+        <div id="message-container"></div>
+        </div>
+    </div>
+    </div>
+    <div class="col-2"></div>
+</div>
+{% endblock %}

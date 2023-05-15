@@ -1,0 +1,117 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <li class="nav-item dropdown hidden-caret">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-fancybox data-src="#addListForm">
+    <i class="la la-car"></i>
+  </a>
+<ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+ <li>
+  <div id="addListForm" style="display:none; width: 800px;">
+    <h4  style="text-decoration: underline; font-weight: bold;" class="text-center">ADD TASK</h4>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name:</label>
+        {{ form.name }}
+      </div>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        {{ form.title }}
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        {{ form.description }}
+      </div>
+      <div class="form-group">
+        <label for="assigned_to">Assigned To:</label>
+        {{ form.assigned_to }}
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        {{ form.status }}
+      </div>
+      <div class="form-group">
+        <label for="priority">Priority:</label>
+        {{ form.priority }}
+      </div>
+      <div class="form-group">
+        <label for="attachment">Attachment:</label>
+        {{ form.attachment }}
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+</li>
+</ul>
+</li>
+<script>
+  $(document).ready(function() {
+    $("[data-fancybox]").fancybox({
+      animationEffect: "zoom-in-out"
+    });
+  });
+</script>
+<style>
+    /* Form styles */
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group input[type="password"]:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    .form-group button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .form-group button[type="submit"]:hover {
+        background-color: #0069d9;
+    }
+
+    /* Fancybox styles */
+    #addListForm {
+        max-width: 800px;
+        width: 90%;
+    }
+    #addListForm .form-group {
+        margin-bottom: 1rem;
+    }
+    #addListForm .form-group label {
+        font-size: 1.2rem;
+    }
+    #addListForm button[type="submit"] {
+        font-size: 1.2rem;
+    }
+    @media screen and (max-width: 768px) {
+        #addListForm {
+            max-width: 500px;
+        }
+    }
+</style>
+{% endblock %}

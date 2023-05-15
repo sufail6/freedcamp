@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+{% load bootstrap5 %}
+<html>
+<head>{% load static %}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>freed camp</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link rel="stylesheet" href=" {% static 'assets/css/bootstrap.min.css' %} ">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+	<link rel="stylesheet" href=" {% static 'assets/css/ready.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/demo.css' %} ">
+	{% include "fancybox/fancybox_css.html" %}
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<div class="logo-header">
+				<a href=" {% url 'project' %} " class="logo">
+					<b>👈Project Page</b>
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+			</div>
+			<nav class="navbar navbar-header navbar-expand-lg">
+				<div class="container-fluid">
+					<input type="hidden" value="{{project_id}}" name="project id">
+
+			 `		<form action="" method="get">
+					<div class="input-group">
+					<input type="text" class="form-control rounded" name="q" placeholder="Search....." aria-label="Search" aria-describedby="search-addon" value="{{ search_query }}">
+					<button type="submit" class="btn btn-outline-primary">Search</button>
+					</div>
+					</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+						<li class="nav-item dropdown hidden-caret">
+							<a class="nav-link dropdown-toggle" href="#" id="" role="button" data-fancybox data-src="#addListForm"><i>Add List</i>
+								<i class="la la-car"></i>
+
+<!--								<span class="notification"></span>-->
+							</a>
+
+							<ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+								<li>
+        							<div class="h-50 d-inline-block" id="addListForm" style="display:none;">
+										<h4  style="text-decoration: underline; font-weight: bold;" class="text-center">ADD LIST</h4>
+										<form method="post" action="/index/{{project_id}}/?action=add_list">
+										{% csrf_token %}
+											<div class="dropdown-divider"></div>
+        									<div class="form-group">
+            									<label class="mb-7 form-label">Title</label>
+            									{{ form.name }}
+        									</div>
+											<div class="dropdown-divider"></div>
+											<div class="form-group">
+            									<label>Description</label>
+												{{ form.description }}
+        									</div>
+        									<div class="text-center">
+            									<button type="submit" class="btn btn-primary">Submit</button>
+        									</div>
+    									</form>
+									</div>
+    							</li>
+							</ul>
+						</li>
+
+<script>
+    $(document).ready(function() {
+        $("[data-fancybox]").fancybox({
+            touch: false,
+            animationEffect: "zoom-in-out"
+        });
+    });
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+<li class="nav-item dropdown hidden-caret">
+    <a class="nav-link dropdown-toggle fancybox" href="#taskForm" id="" role="button"><i>Task</i>
+        <i class="la la-book"></i>
+    </a>
+    <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
+        <li>
+            <div class="h-50 d-inline-block " id="taskForm" style="display:none;">
+                <h4  style="text-decoration: underline; font-weight: bold;" class="text-center">Add Task</h4>
+                <form method="post" action="/index/{{project_id}}/?action=task" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="dropdown-divider"></div>
+                    <div class="form-group">
+                        <label class="mb-7 form-label">Name</label>
+<!--                        {{ tasks.name }}-->
+						<select name="add_list" style="width: 500px; height: 30px;">
+							{% for list in data %}
+							<option value="{{list.id}}">{{list.name}}</option>
+							{% endfor %}
+						</select>
+
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        {{ tasks.title }}
+                    </div>
+					<div class="form-group">
+        				<label for="title">Description:</label>
+						{{ tasks.description }}
+					</div>
+					<div class="form-group">
+        				<label for="assigned_to">Assigned To:</label>
+        				{{ tasks.assigned_to }}
+      				</div>
+					<div class="form-group">
+        				<label for="status">Status:</label>
+        				{{ tasks.status }}
+      				</div>
+					<div class="form-group ">
+        				<label for="priority">Priority:</label>
+        				{{ tasks.priority }}
+      				</div>
+					<div class="form-group">
+        				<label for="attachment">Attachment:</label>
+        				{{ tasks.attachment }}
+      				</div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </li>
+    </ul>
+</li>
+
+<script>
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+    });
+</script>
+
+
+						<li class="nav-item dropdown">
+
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+								{% if user.photo %}
+								<img src= {{user.photo.url}}  alt="user-img" width="36" class="img-circle">
+								{% else %}
+								<img src= "{% static 'assets/img/default.jpg' %}"  alt="user-img" width="36" class="img-circle">
+								{% endif %}
+								<span >{{request.user}}</span></span> </a>
+							<ul class="dropdown-menu dropdown-user">
+								<li>
+									<div class="user-box">
+										{% if user.photo %}
+										<div class="u-img"><img src={{user.photo.url}} alt="user"></div>
+										{% else %}
+										<div class="u-img"><img src="{% static 'assets/img/default.jpg' %}" alt="user"></div>
+										{% endif %}
+
+
+										<div class="u-text">
+											<h4><i class="ti-user">{{request.user}}</i></h4>
+
+<!--											<p class="text-muted">hello@themekita.com</p><a href=" {% static 'profile.html' %} " class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>-->
+										</div>
+								</li>
+
+
+<!--									<a class="dropdown-item" href="#"></i> My Balance</a>-->
+<!--									<a class="dropdown-item" href="#"><i class="ti-email"></i> Inbox</a>-->
+<!--									<div class="dropdown-divider"></div>-->
+<!--									<a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>-->
+<!--									<div class="dropdown-divider"></div>-->
+<!--									<a class="dropdown-item" href="#"> <p class="text-primary">Edit List</p>-->
+<!--</a>-->
+<!--									<div class="dropdown-divider"></div>-->
+<!--									<a class="dropdown-item" href=/delete_list/{{project_id}}/ "><p class="text-danger">🗑 Delete List</p>-->
+									<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!--</a>-->							<div class="dropdown-divider"></div>
+									<h6>Phone Number :<i class="ti-user">&nbsp;  {{user.phone_number}}</i></h6>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item delete-project" href="#" data-id="{{ project_id }}"><i class="fa fa-power-off"></i><p class="text-danger">🗑 Delete Project</p></a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="{% url 'log_out' %}"><i class="fa fa-power-off"></i>Logout</a>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">heyy
+
+							<ul class="dropdown-menu dropdown-user">
+								<li>
+									<div class="user-box">
+										{% if user.photo %}
+										<div class="u-img"><img src={{user.photo.url}} alt="user"></div>
+										{% else %}
+										<div class="u-img"><img src="{% static 'assets/img/default.jpg' %}" alt="user"></div>
+										{% endif %}
+
+
+										<div class="u-text">
+											<h4><i class="ti-user">{{request.user}}</i></h4>
+
+<!--											<p class="text-muted">hello@themekita.com</p><a href=" {% static 'profile.html' %} " class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>-->
+										</div>
+								</li>
+
+
+<!--									<a class="dropdown-item" href="#"></i> My Balance</a>-->
+<!--									<a class="dropdown-item" href="#"><i class="ti-email"></i> Inbox</a>-->
+<!--									<div class="dropdown-divider"></div>-->
+<!--									<a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>-->
+<!--									<div class="dropdown-divider"></div>-->
+<!--									<a class="dropdown-item" href="#"> <p class="text-primary">Edit List</p>-->
+<!--</a>-->
+<!--									<div class="dropdown-divider"></div>-->
+<!--									<a class="dropdown-item" href=/delete_list/{{project_id}}/ "><p class="text-danger">🗑 Delete List</p>-->
+									<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!--</a>-->							<div class="dropdown-divider"></div>
+									<h6>Phone Number :<i class="ti-user">&nbsp;  {{user.phone_number}}</i></h6>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item delete-project" href="#" data-id="{{ project_id }}"><i class="fa fa-power-off"></i><p class="text-danger">🗑 Delete Project</p></a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="{% url 'log_out' %}"><i class="fa fa-power-off"></i>Logout</a>
+							</ul>
+						</li>
+					</ul>
+					</div>
+				</nav>
+			</div>
+			<script>
+			$(document).ready(function() {
+				$('.delete-project').click(function(e) {
+					e.preventDefault();
+					var project_id = $(this).data('id');
+					var message = "Are you sure you want to delete this project?";
+					// Display a pop-up message using Sweet Alert
+					Swal.fire({
+						title: 'Delete Project',
+						text: message,
+						icon: 'warning',
+						showCancelButton: true,
+						confirmButtonColor: '#3085d6',
+						cancelButtonColor: '#d33',
+						confirmButtonText: 'Yes, delete it!'
+					}).then((result) => {
+						if (result.isConfirmed) {
+							// Make an Ajax request to delete the project
+							$.ajax({
+								url: '/delete_project_ajax/' + project_id + '/',
+								type: 'POST',
+								data: {'csrfmiddlewaretoken': '{{ csrf_token }}'},
+								success: function(data) {
+									// Display a success message using Sweet Alert
+									Swal.fire({
+										title: 'Success',
+										text: 'Project Deleted .',
+										icon: 'success'
+									}).then(() => {
+										// Redirect to the project page
+										window.location.href = '/project/';
+									});
+								},
+								error: function(xhr, status, error) {
+									// Display an error message using Sweet Alert
+									Swal.fire({
+										title: 'Error',
+										text: 'An error occurred while deleting the project.',
+										icon: 'error'
+									});
+								}
+							});
+						}
+					});
+				});
+			});
+
+			</script>
+			<div>
+				<nav class="sidebar sidebar-offcanvas" id="sidebar">
+				<div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+		<!--          <a class="sidebar-brand brand-logo" href=""><img src="{% static 'project/images/logo.svg" alt="logo' %}" /></a>-->
+		<!--          <a class="sidebar-brand brand-logo-mini" href=""><img src="{% static 'project/images/logo-mini.svg' %}"/></a>-->
+				</div>
+				<ul class="nav">
+
+				  <li class="nav-item nav-category">
+					<span class="nav-link">Navigation</span>
+				  </li>
+
+				  <li class="nav-item menu-items">
+					<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+					  <span class="menu-icon">
+						<i class="mdi mdi-laptop"></i>
+					  </span>
+					  <b><h5>{{project_data.name}}</h5></b>
+					  <i class="menu-arrow"></i>
+					</a>
+
+				  </li>
+				<li class="nav-item menu-items">
+				  <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+					<span class="menu-icon">
+					  <i class="mdi mdi-laptop"></i>
+					</span>
+					<span class="menu-title">Projects</span>
+					<i class="menu-arrow"></i>
+				  </a>
+				  <div class="collapse" id="ui-basic">
+					<ul class="nav flex-column sub-menu">
+					  {% for form in project %}
+					  <li class="nav-item">
+						<a class="nav-link" href="{% url 'index' form.id %}">
+						  {{form.name}}
+						</a>
+					  </li>
+					  {% endfor%}
+					</ul>
+				  </div>
+				</li>
+
+
+
+				</ul>
+				<div>
+					<h5>hey</h5>
+				</div>
+			  </nav>
+			</div>
+			<div>
+
+			</div>
+<!--			<div class="sidebar">-->
+<!--				<div class="scrollbar-inner sidebar-wrapper">-->
+<!--					<div class="user">-->
+<!--						heyy-->
+<!--					</div>-->
+<!--						<div>heyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</div>-->
+<!--						<div class="photo">-->
+<!--							<img src=" {% static 'assets/img/default.jpg' %} ">-->
+<!--							heyyy-->
+<!--						</div>-->
+<!--						<div class="info">-->
+<!--							heyy-->
+<!--							<a class="" data-toggle="collapse" href=" {% static '#collapseExample' %} " aria-expanded="true">-->
+<!--								<span>-->
+<!--									{{request.user}}-->
+<!--									<span class="user-level">Administrator</span>-->
+<!--									<span class="caret"></span>-->
+<!--								</span>-->
+<!--							</a>-->
+<!--							<div class="clearfix"></div>-->
+
+<!--							<div class="collapse in" id="collapseExample" aria-expanded="true" style="">-->
+<!--								<ul class="nav">-->
+<!--									<li>-->
+<!--										<a href=" {% static '#profile' %} ">-->
+<!--											<span class="link-collapse"></span>-->
+<!--										</a>-->
+<!--									</li>-->
+<!--									<li>-->
+<!--										<a href=" {% static '#edit' %} ">-->
+<!--											<span class="link-collapse"></span>-->
+<!--										</a>-->
+<!--									</li>-->
+<!--									<li>-->
+<!--										<a href=" {% static '#settings' %} ">-->
+<!--											<span class="link-collapse">Settings</span>-->
+<!--										</a>-->
+<!--									</li>-->
+<!--								</ul>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					<div>-->
+<!--						<form method="post">-->
+<!--						{% csrf_token %}-->
+<!--							<div class="dropdown-divider"></div>-->
+<!--							<div class="form-group">-->
+<!--								<label class="mb-7 form-label">Title</label>-->
+<!--								{{ tasks.project }}-->
+<!--							</div>-->
+
+<!--							<div class="text-center">-->
+<!--								<button type="submit" class="btn btn-primary">Submit</button>-->
+<!--							</div>-->
+<!--						</form>-->
+<!--						<input type="hidden" id="" name="project" value="{{project_id}}">-->
+
+<!--					</div>-->
+<!--&lt;!&ndash;					<ul class="nav">&ndash;&gt;-->
+<!--						<li class="nav-item active">-->
+<!--							<a href=" {% static 'index.html' %} ">-->
+<!--								<i class="la la-dashboard"></i>-->
+<!--								<p>Dashboard</p>-->
+<!--								<span class="badge badge-count">5</span>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="nav-item">-->
+<!--							<a href=" {% static 'components.html' %} ">-->
+<!--								<i class="la la-table"></i>-->
+<!--								<p>Components</p>-->
+<!--								<span class="badge badge-count">14</span>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="nav-item">-->
+<!--							<a href=" {% static 'forms.html' %} ">-->
+<!--								<i class="la la-keyboard-o"></i>-->
+<!--								<p>Forms</p>-->
+<!--								<span class="badge badge-count">50</span>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="nav-item">-->
+<!--							<a href=" {% static 'tables.html' %} ">-->
+<!--								<i class="la la-th"></i>-->
+<!--								<p>Tables</p>-->
+<!--								<span class="badge badge-count">6</span>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="nav-item">-->
+<!--							<a href=" {% static 'notifications.html' %} ">-->
+<!--								<i class="la la-bell"></i>-->
+<!--								<p>Notifications</p>-->
+<!--								<span class="badge badge-success">3</span>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="nav-item">-->
+<!--							<a href=" {% static 'typography.html' %} ">-->
+<!--								<i class="la la-font"></i>-->
+<!--								<p>Typography</p>-->
+<!--								<span class="badge badge-danger">25</span>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="nav-item">-->
+<!--							<a href=" {% static 'icons.html' %} ">-->
+<!--								<i class="la la-fonticons"></i>-->
+<!--								<p>Icons</p>-->
+<!--							</a>-->
+<!--						</li>-->
+<!--						<li class="nav-item update-pro">-->
+<!--							<button  data-toggle="modal" data-target="#modalUpdate">-->
+<!--								<i class="la la-hand-pointer-o"></i>-->
+<!--								<p>Update To Pro</p>-->
+<!--							</button>-->
+<!--						</li>-->
+<!--					</ul>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<link rel="stylesheet" href="path/to/fancybox.css" />
+<script src="path/to/jquery.js"></script>
+<script src="path/to/fancybox.js"></script>
+			<div class="main-panel">
+				<div class="content">
+
+{% for data in data %}
+	<div class="card">
+		<div class="card-body">
+            <h4 style="text-decoration: underline; font-weight: bold; display: inline-block;">{{data.name}}</h4>
+			<h6>{{data.description}}</h6>
+            <form action="{% url 'delete_list' data.id %}" method="post" class="delete-form">
+				{% csrf_token %}
+    			<button type="submit" class="btn btn-danger" data-confirm="Are you sure you want to delete this list?">Delete List</button>
+			</form>
+			<br>
+			<table class="table table-borderless">
+				{% for i in task_list %}
+				<tbody>
+				{% if data.id == i.name.id %}
+				<td>{{i.title}}—
+				{{i.description}}
+				<a class="btn btn-success btn-sm fancybox" data-val="{{i.id}}" data-fancybox data-src="#assigned-to-popup">{{i.assigned_to}}</a>
+
+				<div id="assigned-to-popup" style="display: none; width: 500px; height: 400px;">
+				  <form method="post" action="/assign_update/{{i.id}}/">
+					{% csrf_token %}
+						<div class="dropdown-divider"></div>
+						<div class="form-group">
+							<label class="mb-7 form-label">Assigned To</label>
+							{{ assign.assigned_to }}
+						</div>
+						<div class="dropdown-divider"></div>
+					  <div class="text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+
+				<a class="btn btn-warning btn-sm status-fancybox" data-fancybox data-src="#status-popup" >{{ i.status }}</a>
+
+				<div id="status-popup" style="display: none; width: 500px; height: 400px;">
+				  <form method="post"  id="status1" action="/status_update/{{i.id}}/">
+					{% csrf_token %}
+					<div class="dropdown-divider"></div>
+					<div class="form-group">
+					  <label class="mb-7 form-label">Status{{task_id}}</label>
+					  {{ status.status }}
+					</div>
+
+					<div class="dropdown-divider"></div>
+					<div class="text-center">
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				  </form>
+				</div>
+				<a class="btn btn-secondary btn-sm priority-fancybox" data-fancybox data-src="#priority-popup">{{i.priority}}</a>
+				<div id="priority-popup" style="display: none; width: 500px; height: 400px;">
+				  <form method="post" action="/priority_update/{{ i.id }}/">
+					{% csrf_token %}
+					<div class="dropdown-divider"></div>
+					<div class="form-group">
+					  <label class="mb-7 form-label">Priority</label>
+					  {{ priority.priority }}
+					</div>
+					<div class="dropdown-divider"></div>
+					<div class="text-center">
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				  </form>
+				</div>
+
+
+				{{i.date}}</td>
+				<td><a class="btn btn-primary" href="{% url 'task_update' i.id %}">EDIT</a></td>
+
+				</tbody>
+				{% endif %}
+				{% endfor %}
+			</table>
+	</div>
+</div>
+{% endfor %}
+
+</nav>
+<script>
+  $(document).ready(function() {
+    $(".fancybox").fancybox({
+
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $(".status-fancybox").fancybox({
+
+
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $(".priority-fancybox").fancybox({
+
+
+    });
+  });
+</script>
+
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #4CAF50;
+}
+.button1{
+   background-color: #f44336;
+}
+.button3{
+   background-color: #e7e7e7;
+}
+
+</style>
+<script>
+	$(document).ready(function() {
+    $('.delete-form').submit(function(e) {
+        e.preventDefault();
+        var form = this;
+        var confirmMsg = $(this).find('button').data('confirm');
+        if (confirmMsg) {
+            if (confirm(confirmMsg)) {
+                $.ajax({
+                    url: form.action,
+                    type: form.method,
+                    data: $(form).serialize(),
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            }
+        } else {
+            $.ajax({
+                url: form.action,
+                type: form.method,
+                data: $(form).serialize(),
+                success: function() {
+                    location.reload();
+                }
+            });
+        }
+    });
+});
+
+</script>
+{% include "fancybox/fancybox_js.html" %}
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">									
+					<p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development</p>
+					<p>
+						<b>We'll let you know when it's done</b></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src=" {% static 'assets/js/core/jquery.3.2.1.min.js' %} "></script>
+<script src=" {% static 'assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %} "></script>
+<script src=" {% static 'assets/js/core/popper.min.js' %} "></script>
+<script src=" {% static 'assets/js/core/bootstrap.min.js' %} "></script>
+<script src=" {% static 'assets/js/plugin/chartist/chartist.min.js' %} "></script>
+<script src=" {% static 'assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js' %} "></script>
+<!--<script src=" {% static 'assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js' %} "></script>-->
+<script src=" {% static 'assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js' %} "></script>
+<script src=" {% static 'assets/js/plugin/jquery-mapael/jquery.mapael.min.js' %} "></script>
+<script src=" {% static 'assets/js/plugin/jquery-mapael/maps/world_countries.min.js' %} "></script>
+<script src=" {% static 'assets/js/plugin/chart-circle/circles.min.js' %} "></script>
+<script src=" {% static 'assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %} "></script>
+<script src=" {% static 'assets/js/ready.min.js' %} "></script>
+<script src=" {% static 'assets/js/demo.js' %} "></script>
+</html>
+<style>
+    .delete-form {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
+<style>
+	.dropdown-menu {
+  width: 500px; /* adjust as needed */
+}
+
+    .center-form {
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-group {
+        padding: 10px 0;
+        margin: 10px 0;
+    }
+
+/* Center the form horizontally */
+#addListForm {
+  text-align: left;
+}
+
+/* Style form labels */
+.form-label {
+  font-weight: bold;
+}
+
+/* Add some margin to form elements */
+.form-group {
+  margin: 10px 0;
+}
+
+/* Adjust form input and textarea width */
+#id_title, #id_description {
+  width: 100%;
+  max-width: 500px;
+  height : 100%;
+  max-height : 100px
+}
+
+/* Style the form submit button */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+</style>
+<style>
+    /* Form styles */
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
+    .form-group input[type="password"]:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    .form-group button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .form-group button[type="submit"]:hover {
+        background-color: #0069d9;
+    }
+
+    /* Fancybox styles */
+    #taskForm {
+        max-width: 800px;
+        width: 90%;
+    }
+    #taskForm .form-group {
+        margin-bottom: 1rem;
+    }
+    #taskForm .form-group label {
+        font-size: 1.2rem;
+    }
+    #taskForm button[type="submit"] {
+        font-size: 1.2rem;
+    }
+    @media screen and (max-width: 768px) {
+        #taskForm {
+            max-width: 500px;
+        }
+    }
+    #taskForm {
+  		min-height: 800px;
+  		overflow-y: auto;
+}
+</style>

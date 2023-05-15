@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+{% extends 'project.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>Project</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'project/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'project/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'project/vendors/jvectormap/jquery-jvectormap.css' %}">
+    <link rel="stylesheet" href="{% static 'project/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'project/vendors/owl-carousel-2/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'project/vendors/owl-carousel-2/owl.theme.default.min.css' %}">
+    	{% include "fancybox/fancybox_css.html" %}
+
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'project/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'project/images/favicon.png' %}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+<!--          <a class="sidebar-brand brand-logo" href=""><img src="{% static 'project/images/logo.svg" alt="logo' %}" /></a>-->
+<!--          <a class="sidebar-brand brand-logo-mini" href=""><img src="{% static 'project/images/logo-mini.svg' %}"/></a>-->
+        </div>
+        <ul class="nav">
+
+          <li class="nav-item nav-category">
+            <span class="nav-link">Navigation</span>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Projects</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                {% for form in data %}
+                <li class="nav-item"> <a class="nav-link" href="{% url 'index' form.id %}">{{form.name}}</a></li>
+
+                {% endfor%}
+
+
+              </ul>
+            </div>
+          </li>
+
+
+        </ul>
+      </nav>
+      {% block content %}
+        heyy
+      {% endblock %}
+      </div>
+      </body>
+      <!-- partial -->
+<!--      <div class="container-fluid page-body-wrapper">-->
+<!--        &lt;!&ndash; partial:partials/_navbar.html &ndash;&gt;-->
+<!--        <nav class="navbar p-0 fixed-top d-flex flex-row">-->
+<!--          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">-->
+<!--            <a class="navbar-brand brand-logo-mini" href=""><img src="{% static 'project/images/logo-mini.svg' %}" alt="logo" /></a>-->
+<!--          </div>-->
+<!--          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">-->
+<!--            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">-->
+<!--              <span class="mdi mdi-menu"></span>-->
+<!--            </button>-->
+<!--&lt;!&ndash;            <ul class="navbar-nav w-100">&ndash;&gt;-->
+<!--&lt;!&ndash;              <li class="nav-item w-100">&ndash;&gt;-->
+<!--&lt;!&ndash;                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <input type="text" class="form-control" placeholder="Search products">&ndash;&gt;-->
+<!--&lt;!&ndash;                </form>&ndash;&gt;-->
+<!--&lt;!&ndash;              </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
+
+<!--            <ul class="navbar-nav navbar-nav-right">-->
+<!--&lt;!&ndash;              <li class="nav-item dropdown d-none d-lg-block">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <h6 class="p-3 mb-0">Projects</h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <p class="p-3 mb-0 text-center">See all projects</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </li>&ndash;&gt;-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />-->
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>-->
+
+<!--<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">-->
+<!--  <li class="nav-item dropdown hidden-caret">-->
+<!--    <a  class="nav-link btn btn-success create-new-button" href="#" id="createbuttonDropdown" role="button" data-fancybox data-src="#addListForm">-->
+<!--      + Create New Project-->
+<!--    </a>-->
+
+<!--    <ul class="dropdown-menu notif-box" aria-labelledby="createbuttonDropdown">-->
+<!--      <li>-->
+<!--        <div class="h-50 d-inline-block" id="addListForm" style="display:none;">-->
+<!--          <div class="card-title text-center py-3">Add Project</div>-->
+<!--		    <form method="post" id="add-project-form">-->
+<!--                {% csrf_token %}-->
+<!--                {{form}}-->
+<!--                <button type="submit" class="btn btn-light btn-block waves-effect waves-light">Create Project</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </li>-->
+<!--</ul>-->
+<!--<div id="message-container"></div>-->
+<!--<script>-->
+<!--  $(document).ready(function() {-->
+<!--    $("[data-fancybox]").fancybox({-->
+<!--      touch: false,-->
+<!--      animationEffect: "zoom-in-out"-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--<script>-->
+<!--$(document).ready(function() {-->
+<!--    $("#add-project-form").submit(function(event) {-->
+<!--        event.preventDefault();-->
+<!--        var form = $(this);-->
+<!--        $.ajax({-->
+<!--            type: "POST",-->
+<!--            url: "{% url 'project' %}",-->
+<!--            data: form.serialize(),-->
+<!--            success: function(data) {-->
+<!--                $("#message-container").html("<div class='alert alert-success'>" + data.message + "</div>");-->
+<!--                setTimeout(function() {-->
+<!--                    form.trigger("reset");-->
+<!--                    window.location.href = "{% url 'project' %}";-->
+<!--                }, 500);-->
+<!--            },-->
+<!--            error: function(data) {-->
+<!--                $("#message-container").html("<div class='alert alert-danger'>" + data.responseJSON.message + "</div>");-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--});-->
+<!--</script>-->
+
+
+<!--&lt;!&ndash;              <li class="nav-item nav-settings d-none d-lg-block">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="nav-link" href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <i class="mdi mdi-view-grid"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;              </li>&ndash;&gt;-->
+
+<!--              <li class="nav-item dropdown">-->
+<!--                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">-->
+<!--                  <div class="navbar-profile">-->
+<!--                    {% if user.photo %}-->
+<!--                    <img class="img-xs rounded-circle" src={{user.photo.url}} alt="">-->
+<!--                    {% else %}-->
+<!--                    <img class="img-xs rounded-circle" src="{% static 'assets/img/default.jpg' %}" alt="">-->
+<!--                      {% endif %}-->
+<!--                      <p class="mb-0 d-none d-sm-block navbar-profile-name">{{request.user}}</p>-->
+<!--                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>-->
+<!--                  </div>-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">-->
+<!--                  <center><h4 class="p-3 mb-0">Profile</h4></center>-->
+<!--&lt;!&ndash;                  <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--                  <a class="dropdown-item preview-item">-->
+<!--&lt;!&ndash;                    <div class="preview-thumbnail">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="preview-icon bg-dark rounded-circle">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <i class="mdi mdi-settings text-success"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="preview-item-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <center><a href="{% url 'profile_update' request.user.id %}">UPDATE</a></center><br><br><br><br>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                  </a>-->
+<!--&lt;!&ndash;                  <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a class="dropdown-item preview-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="preview-thumbnail">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="preview-icon bg-dark rounded-circle">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <i class="mdi mdi-logout text-danger"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="preview-item-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                        {% if user.is_authenticated %}&ndash;&gt;-->
+<!--&lt;!&ndash;                        <center><a href="{% url 'log_out' %}">Logout</a></center><br><br><br><br>&ndash;&gt;-->
+<!--&lt;!&ndash;                        {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    <div class="dropdown-divider"></div>-->
+<!--                    <a class="dropdown-item" href="{% url 'profile_update' request.user.id %}"><i class="fa fa-power-off"></i> Update Profile</a>-->
+<!--                    <div class="dropdown-divider"></div>-->
+<!--                    <a class="dropdown-item" href="{% url 'log_out' %}"><i class="fa fa-power-off"></i> Logout</a>-->
+<!--                  </a>-->
+<!--                  <div class="dropdown-divider"></div>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">-->
+<!--              <span class="mdi mdi-format-line-spacing"></span>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </nav>-->
+<!--        &lt;!&ndash; partial &ndash;&gt;-->
+<!--        <div class="main-panel">-->
+<!--          <div class="content-wrapper">-->
+<!--            <div class="row">-->
+
+<!--            </div>-->
+<!--&lt;!&ndash;-->
+
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="row ">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="col-12 grid-margin">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="card">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="card-body">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h4 class="card-title">Order Status</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="table-responsive">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <table class="table">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="form-check form-check-muted m-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <input type="checkbox" class="form-check-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th> Client Name </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th> Order No </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th> Product Cost </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th> Project </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th> Payment Mode </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th> Start Date </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <th> Payment Status </th>&ndash;&gt;-->
+<!--&lt;!&ndash;                          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="form-check form-check-muted m-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <input type="checkbox" class="form-check-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <img src="project/images/faces/face1.jpg" alt="image" />&ndash;&gt;-->
+<!--&lt;!&ndash;                              <span class="pl-2">Henry Klein</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 02312 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> $14,500 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Dashboard </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Credit card </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 04 Dec 2019 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="badge badge-outline-success">Approved</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="form-check form-check-muted m-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <input type="checkbox" class="form-check-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <img src="{% static 'project/images/faces/face2.jpg' %}" alt="image" />&ndash;&gt;-->
+<!--&lt;!&ndash;                              <span class="pl-2">Estella Bryan</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 02312 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> $14,500 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Website </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Cash on delivered </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 04 Dec 2019 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="badge badge-outline-warning">Pending</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="form-check form-check-muted m-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <input type="checkbox" class="form-check-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <img src="{% static 'project/images/faces/face5.jpg' %}" alt="image" />&ndash;&gt;-->
+<!--&lt;!&ndash;                              <span class="pl-2">Lucy Abbott</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 02312 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> $14,500 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> App design </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Credit card </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 04 Dec 2019 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="badge badge-outline-danger">Rejected</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="form-check form-check-muted m-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <input type="checkbox" class="form-check-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <img src="{% static 'project/images/faces/face3.jpg' %}" alt="image" />&ndash;&gt;-->
+<!--&lt;!&ndash;                              <span class="pl-2">Peter Gill</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 02312 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> $14,500 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Development </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Online Payment </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 04 Dec 2019 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="badge badge-outline-success">Approved</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="form-check form-check-muted m-0">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label class="form-check-label">&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <input type="checkbox" class="form-check-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <img src="{% static 'project/images/faces/face4.jpg' %}" alt="image" />&ndash;&gt;-->
+<!--&lt;!&ndash;                              <span class="pl-2">Sallie Reyes</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 02312 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> $14,500 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Website </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> Credit card </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td> 04 Dec 2019 </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                              <div class="badge badge-outline-success">Approved</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;                          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </table>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--{% include "fancybox/fancybox_js.html" %}-->
+
+<!--          <footer class="footer">-->
+<!--            <div class="d-sm-flex justify-content-center justify-content-sm-between">-->
+<!--              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block"></span>-->
+<!--              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"></a></span>-->
+<!--            </div>-->
+<!--          </footer>-->
+<!--          &lt;!&ndash; partial &ndash;&gt;-->
+<!--        </div>-->
+<!--        &lt;!&ndash; main-panel ends &ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; page-body-wrapper ends &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; container-scroller &ndash;&gt;-->
+    <!-- plugins:js -->
+    <script src="{% static 'project/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'project/vendors/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'project/vendors/progressbar.js/progressbar.min.js' %}"></script>
+    <script src="{% static 'project/vendors/jvectormap/jquery-jvectormap.min.js' %}"></script>
+    <script src="{% static 'project/vendors/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+    <script src="{% static 'project/vendors/owl-carousel-2/owl.carousel.min.js' %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'project/js/off-canvas.js' %}"></script>
+    <script src="{% static 'project/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'project/js/misc.js' %}"></script>
+    <script src="{% static 'project/js/settings.js' %}"></script>
+    <script src="{% static 'project/js/todolist.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'project/js/dashboard.js' %}"></script>
+    <!-- End custom js for this page -->
+<style>
+
+
+#addListForm {
+  background-color: #f2f2f2;
+  padding: 20px;
+  color: black;
+  min-height: 200px;
+  max-width: 350px;
+  width: 90%;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+form label,
+form input,
+form select,
+form textarea {
+  color: #333; /* replace with desired color value */
+}
+</style>
+  </body>
+</html>
